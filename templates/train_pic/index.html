@@ -1,0 +1,159 @@
+<!doctype html>
+{% load staticfiles %}
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="apple-touch-icon" href="icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="{% static 'css/train_pic/normalize.css'%}">
+        <link rel="stylesheet" href="{% static 'css/train_pic/main.css'%}">
+        <link href="{% static 'css/train_pic/mycss1.css'%}" style="text/css" rel="stylesheet">
+        <script type="text/javascript" src="{% static 'js/mainpage/tools.js'%}" ></script>
+        <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=lpEePrfzT4iGz7yxVTowx2M8HS0nzTPn">
+//v3.0版本的引用方式：src="http://api.map.baidu.com/api?v=3.0&ak=您的密钥"</script>
+        <script>
+           var seq=0;
+            function move(){
+                var obj=document.getElementById("outdiv");
+                var obj_in = document.getElementById("indiv");
+                if(obj.scrollTop > obj_in.offsetHeight/1.5)
+                {obj.scrollTop=0;}
+                else
+                {obj.scrollTop++;}
+            }
+        </script>
+    </head>
+    <body>
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <div class="top">
+            <div class="top_1">
+                <nav class="nav_">
+                    <ul>
+                        <li><a class="a1" href="#" target="_blank" tytle="聪哥的主页">我的主页</a></li>
+                        <li><a class="a2" href="tielusheying" target="_blank" tytle="铁路摄影">铁路摄影</a></li>
+                        <li><a class="a3" href="fengjingsheying" target="_blank" tytle="风景摄影">风景摄影</a></li>
+                        <li><a class="a4" href="#" target="_blank" tytle="机器人展示">机器人展示</a></li>
+                        <li><a class="a5" href="#" target="_blank" tytle="足球球技SHOW">足球球技SHOW</a></li>
+                        <li><a class="a6" href="#" target="_blank" tytle="聪哥的论坛">我的论坛</a></li>
+                        <li><a class="a6" href="zhibo.html" target="_blank" tytle="直播（测试用）">直播（测试用）</a></li>
+                    </ul>
+                </nav>
+                <div style="float: right">
+                    <form action="../cgi-bin/ceshi_4_22.py" method="get">
+                    <input type="text" name="content" value="请输入搜索内容">
+                    <input type="submit" value="提交">
+                    </form>
+                </div>
+            </div>
+            <div class="img_fengmian"><img class="fengmian" src="{% static 'images/train_pic/fengmian.jpg'%}" width="100%" height="100%"> </div>
+        </div>
+        <div class="fengjing_content" id="map_container" style="width: 450px;height: 300px; float: left;position: absolute;display: none"></div>
+        <div class="main_body" style="border-bottom-left-radius: 10px;border-style: groove">
+            <div class="main_body_img1_tiao"></div>
+            <script>
+                var s=setInterval(move,20);
+            </script>
+            <div id="outdiv" style="width:50%; height: 350px; overflow:hidden; float: left">
+                <div id="indiv" style="width:100%; height: 1020px; float:top;">
+                    <a href="/main_src/huoche/hukun_zhuzhou/hukun_zhuzhou1.html" target="_blank"><img src="{% static 'images/train_pic/train_photo.jpeg'%} " name1 = '镇远' width="95%" height="350px"></a>
+                    <a href="/main_src/huoche/qingzangtielu_chushiduan/qingzangtielu_chushiduan1.html" target="_blank"><img src="{% static 'images/train_pic/train_photo1.jpg'%} " name1 = '株洲北站' width="95%" height="350px"></a>
+                    <a href="/main_src/huoche/hukun_zhuzhou/hukun_zhuzhou3.html" target="_blank"><img src="{% static 'images/train_pic/train_photo2.jpg'%} " name1 = '坪石' width="95%" height="350px"></a>
+                </div>
+            </div>
+
+            <div class="railway_photo_content">
+                <a href="tielusheying/sanmenxiafenglingdu1" title="晋南-三门峡-风陵渡" target="_blank"><u>1.晋南-三门峡—风陵渡（未完成编辑。。）</u></a>
+                <a href="/main_src/huoche/qingzangtielu_chushiduan/qingzangtielu_chushiduan1.html" title="青藏铁路" target="_blank"><u>2.青藏铁路初始段（未完成编辑。。）</u></a>
+                <a href="/main_src/huoche/hukun_zhuzhou/hukun_zhuzhou1.html" title="株北编组场" target="_blank"><u>3.沪昆京广枢纽：株洲北编组场（未完成编辑。。）</u></a>
+                <a href="/main_src/huoche/hukun_zhuzhou/hukun_zhuzhou1.html" title="湖南广东交界铁路探索" target="_blank"><u>4.湖南广东交界铁路探索（未完成编辑。。）</u></a>
+                <a href="/main_src/huoche/hukun_zhuzhou/hukun_zhuzhou1.html" title="探索山东日照青岛沿海铁路" target="_blank"><u>5.探索山东日照青岛沿海铁路（未完成编辑。。）</u></a>
+                <a href="/main_src/huoche/hukun_zhuzhou/hukun_zhuzhou1.html" title="贵州铁路——黔桂线全程跟拍" target="_blank"><u>6.贵州铁路——黔桂线全程跟拍（未完成编辑。。）</u></a>
+                <a href="/main_src/huoche/hukun_zhuzhou/hukun_zhuzhou1.html" title="徽京铁路，黄山 " target="_blank"><u>7.徽京铁路，黄山 （未完成编辑。。）</u></a>
+            </div>
+            <div class="genanxuesheying"><div class="buju"><a><b>快来跟俺学摄影！！</b></a></div></div>
+            <div class="fengjing_sheying">
+                <div class="fengjing_left">
+                    <img src="{% static 'images/train_pic/fengjing_left.jpeg'%}" width="100%" height="100%">
+                </div>
+
+                <div class="fengjing_right">
+                    <video width="100%" height="100%" autoplay loop>
+                        <source src="{% static 'videos/train_pic/huashan/huashan1.Ogg'%}">
+                        <source src="{% static 'videos/train_pic/huashan/huashan1.mp4'%}">
+                    </video>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
+
+        <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+        <script>
+            window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+            ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
+        </script>
+        <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+        <div class="ceshi" id="ceshi" style="width: 100px;height: 100px;"></div>
+        <script type="text/javascript">
+            function getMap(ev) {
+                var mouseEvent = ev || window.event;
+                oMapContainer.style.top = mouseEvent.clientY  - 60 +  'px';
+                oMapContainer.style.left = mouseEvent.clientX  + 7 + 'px';
+                var name = this.getAttribute('name1')
+                var opts = {
+                    width:10,
+                    height:20,
+                    title: ''
+                }
+                var infoWin = new BMap.InfoWindow('拍照所在地！株洲北站 京广上下行正线沪昆下行正线三线并排！',opts);
+
+                map.centerAndZoom(centerpoint,15);
+                map.setMapStyleV2({
+                    styleId: '0cc3d773efef33ef0bf6784dcd033723'
+                });
+                map.openInfoWindow(infoWin,map.getCenter());
+                oCeshi.innerHTML = mouseEvent.clientX + 'px' + ' ' + mouseEvent.clientY + 'px' + name;
+
+            }
+            function shutDownMap() {
+                oMapContainer.style.display = 'none';
+            }
+            function openMap() {
+                oMapContainer.style.display = 'block';
+            }
+            var map = new BMap.Map('map_container');
+            map.centerAndZoom('广州',55);
+            var centerpoint = new BMap.Point(113.114539,27.89184);
+            window.onload = function(){
+                oDiv = document.getElementById('indiv');
+                oImgs = oDiv.getElementsByTagName('img');
+                oMapContainer = document.getElementById('map_container');
+                oMapContainer.style.display = 'none';
+                oCeshi = document.getElementById('ceshi');
+                var index = 0;
+                var i = 0;
+                for(i = 0;i < oImgs.length;i++){
+                oImgs[i].onmousemove = getMap;
+                oImgs[i].onmouseout = shutDownMap;
+                oImgs[i].onmouseover = openMap;
+                }
+            }
+
+        </script>
+        <script>
+
+        </script>
+    </body>
+</html>

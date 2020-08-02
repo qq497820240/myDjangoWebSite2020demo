@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ss</title>
+    <link href="#" style="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>电力机车</h1>
+<ul>
+    {% for e_train in electrics %}
+    <li>
+        <a href="#">{{e_train.E_name}}</a>
+    </li>
+    {% endfor %}
+</ul>
+<ul>
+    {% for p_num in pages_num %}
+    <li><a href="ss{{p_num}}">{{p_num}}</a></li>
+    {% endfor %}
+</ul>
+</body>
+</html>

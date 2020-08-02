@@ -1,0 +1,22 @@
+.fengjingsheying_body{
+    background-color: ivory;
+}
+.fengjingsheying_lanmu{
+    width: 1000px;
+    height: 2000px;
+    margin: 10px auto;
+    background-color: azure;
+    border-style: groove;
+}
+.fengjingsheying_lanmu_padding{
+    width: 70%;
+    height: 100%;
+    float: left;
+    border-right-style: groove;
+    background-color: aliceblue;
+}
+.fengjingsheying_lanmu_padding_right{
+    width: 29.5%;
+    height: 100%;
+    float: right;
+}

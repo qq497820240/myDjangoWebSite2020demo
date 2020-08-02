@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> 三门峡——风陵渡</title>
+    <link href="{% static 'css/train_pic/hukun_zhuzhou.css'%}" style="text/css" rel="stylesheet">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=lpEePrfzT4iGz7yxVTowx2M8HS0nzTPn"></script>
+    <script src="{% static 'js/sanmenxiafenglingdu/baidumap.js'%}"></script>
+    <script>
+        var oShowLineInfo;
+        var oShowMap;
+        function initMap(id) {
+            var mapConfig = {}
+            var map = new BMap.Map(id);
+            map.centerAndZoom(new BMap.Point(110.121432,34.592081),9);
+            return  map;
+        }
+        function setPtArray() {
+            var p1 = new BMap.Point(111.20783,34.777911);
+            var p2 = new BMap.Point(111.201937,34.842551);
+            var p3 = new BMap.Point(110.995543,35.040714);
+            var p4 = new BMap.Point(110.4597,34.875459);
+            var p5 = new BMap.Point(110.317121,34.637134);
+            var p6 = new BMap.Point(110.250734,34.561438);
+            var p7 = new BMap.Point(110.087584,34.536552);
+            var p8 = new BMap.Point(108.94767,34.378083);
+            return new Array(p1,p2,p3,p4,p5,p6,p7,p8);
+        }
+        function setPolylineOptions(){
+            return {
+                strokeColor : 'green',
+                strokeWeight : 5,
+                strokeOpacity : 0.7,
+                strokeStyle : 'solid',
+                enableMassClear : false,
+                enableEditing : false};
+        }
+        var searchMapInfo;
+        function onSearchCompleteCallBack(result) {
+            var arr = new Array(2);
+            //document.createElement('p');
+            for (var i = 0; i < arr.length;i++){
+                arr[i] = document.createElement('p');
+             }
+             arr[0].innerHTML = result.province;
+             arr[1].innerHTML = result.city;
+             for (var i = 0; i < arr.length;i++){
+                 oShowLineInfo.appendChild(arr[i]);
+             }
+
+        }
+        function searchEvent(ev){
+            var e = ev;
+            var target = e.target;
+            oShowLineInfo.style.display = 'block';
+            oShowLineInfo.style.left = e.pixel.x + oShowMap.offsetLeft + 'px';
+            oShowLineInfo.style.top = e.pixel.y + oShowMap.offsetTop + 'px';
+            searchMapInfo.setLocation(new BMap.Point(e.point.lng,e.point.lat));
+            searchMapInfo.search('餐馆');
+        }
+        function closeDiv(ev){
+            oShowLineInfo.style.display = 'none';
+            var oLi = oShowLineInfo.getElementsByTagName('p');
+            for (var l in oShowLineInfo.childNodes){
+                if(l.nodeName == 'li')
+                    oShowLineInfo.removeChild(l);
+            }
+            oShowLineInfo.innerHTML = '';
+        }
+        window.onload = function () {
+            var map = initMap('map');
+            map.enableScrollWheelZoom();
+            map.setMapStyleV2({
+                styleId: '0cc3d773efef33ef0bf6784dcd033723'
+            });
+            oShowLineInfo = document.getElementById('show');
+            oShowMap = document.getElementById('map');
+            searchMapInfo = new BMap.LocalSearch(map,{onSearchComplete:onSearchCompleteCallBack});
+            var Pline =  new BMap.Polyline(setPtArray(),setPolylineOptions());
+            map.addOverlay(Pline);
+            Pline.addEventListener('mouseover',searchEvent);
+            Pline.addEventListener('mouseout',closeDiv)
+        };
+
+    </script>
+</head>
+<body class="zhubei_main_body">
+<!--audio src="{%static 'music/just give me a reason.mp3'%}" loop autoplay style="overflow: hidden"></audio -->
+<div id = 'show' style="height: 100px;width: 100px;position: absolute;display: none;border-color: black;
+z-index:9999;border: 2px solid;background-color: deepskyblue"></div>
+<div class="zhubei_main">
+    <div class="zhubei_daohang">
+        <nav class="nav">
+            <ul>
+                <li><a class="a1" href=".." target="_blank" tytle="聪哥的主页"><font color="white">主页</font> </a></li>
+                <li><a class="a2" href="../tielusheying" target="_self" tytle="铁路摄影导航页">铁路摄影导航页</a></li>
+                <li><a class="a3" href="sanmenxiafenglingdu1.html" target="_self" tytle="首页">首页</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="zhubei_main_text">
+        <h2 style="color: blue">三门峡湖滨车站—山西风陵渡</h2>
+        <p style="font-size: large">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<b>某</b>年12月，兴致勃勃地从广州出发，在武汉稍作逗留，去探访向往已久的湖滨车站以及风陵渡大桥。</p>
+        <h2 style="color: blue">路线</h2>
+        <div style="margin: 0px auto;width: 75%;height: 550px;" >
+            <div style="height: 500px" id = 'map'></div>
+            <div style="text-align: center"><button id = 'changeMap' style="margin: auto;text-align: center;align-self: center;height: 25px">转换为热力图</button></div>
+        </div>
+
+        <p style="font-size: large">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>明</b>显，线路由东向西，途经（下车）武汉至河南洛阳一宿、三门峡、平陆县、由平陆县搭乘中巴去往运城、在运城坐通勤车去完风陵渡、在
+            风陵渡坐中巴去潼关、潼关回西安（顺道爬了个华山）。</p>
+        <h2 style="color: blue">三门峡</h2>
+        <p style="font-size: large">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>其</b>实三门峡市内有很多可供拍车的地方，包括著名的陇海大弯道。那天天气很奇怪，从洛阳一条纬度一路过来都下雪了，唯独这里没有下
+        ，但气温十分寒冷。在火车站一下车就冲冲赶去客运站坐车，途中经过了那个大弯道，但因为十分冷所以就没拍照了。</p>
+        <div style="margin: 0px auto;width: 75%;"><img src="{%static '/images/train_pic/huoche/shanxi_shanxi/zhanxian.jpg'%}" width="70%"> </div>
+        <p style="font-size: large">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>下</b>了公交车，沿着某条路走大概1公里，就到达目的地湖滨车站。</p>
+        <h3 style="color: #b3d4fc">湖滨车站</h3>
+        <p style="font-size: large">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>湖</b>滨车站位于三门峡市区春秋路北，是当年为了修建三门峡大坝而专设的一条铁路线，贯穿湖滨区的会兴街道和高庙乡，途经大安街道、
+            坝头(史家滩)、七里沟。</p>
+        <p style="font-size: large">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;三门峡市是一座随着万里黄河第一坝的建设而兴起的城市。1957年4月，三门峡大坝破土动工。市区湖滨车站通往三门峡大坝的铁路线担负着重要的运输任务，负责向大坝运输水泥、沙石、钢材
+            和施工设备等。随着大坝的建成，这条铁路又担负起大坝的运营、维护重任。
+        <p style="font-size: large">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;三门峡大坝破土动工后，来自全国各地的建设者云集大安。为了便于将各类物资运往大坝工地，1956年2月开始陆续修建从湖滨车站到大坝的临时铁路，
+        即“湖大”线。铁路从三门峡火车站与陇海线接轨，经酬子坡线路所、马家河底车站、大安乘降所、史家滩车站、老鸦沟车站至七里沟，后由于大坝要提前实现拦洪蓄水，部分铁路成为淹没区和坍岸地带。1959年6月铁路进行了改线，总
+        长度17.9公里，设有湖滨车站(编组站)、大安车站(中间站)、史家滩车站(旅客站)、老鸦沟货站。随着沿黄公路的修建，市区又新增了通往三门峡大坝的客车，这条服役了47年的铁路线逐渐退出历史舞台，于2004年4月1日正式停运。目前，
+        该铁路线仅剩湖滨火车站至会兴街道王官段的3公里线路继续运营，负责向中石化股份河南三门峡石油分公司王官油库运送石油。</p>
+        <div style="width: 70%;margin: 0px auto"><img src="{%static '/images/train_pic/huoche/shanxi_shanxi/hubin_feiqi.JPG'%}" width="70%"><p>废弃的线路</p></div>
+        <p style="font-size: large">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这次实际探索的路线是湖滨（编组站）</p>
+        <div style="width: 70%;margin: 0px auto">
+            <img src="{%static '/images/train_pic/huoche/shanxi_shanxi/hubin1.jpg'%}" width="70%"><p>编组站</p>
+            <img src="{%static '/images/train_pic/huoche/shanxi_shanxi/hubin2.jpg'%}" width="70%"><p>编组站</p>
+        </div>
+
+    </div>
+
+
+    <div class="zhubei_yeshu">
+        <ul class="zhubei_yeshu_ul" style="float: left">
+            <li><a class="aa1" href="#" target="_self">1</a>
+            <li><a class="aa2" href="sanmenxiafenglingdu2" target="_self">2</a>
+            <li><a class="aa3" href="sanmenxiafenglingdu3" target="_self">3</a>
+            <li><a class="aa2" href="sanmenxiafenglingdu4" target="_self">4</a>
+            <li><a class="aa2" href="sanmenxiafenglingdu5" target="_self">5</a>
+        </ul>>
+    </div>
+
+</div>
+</body>
+</html>
+

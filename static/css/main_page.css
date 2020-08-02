@@ -1,0 +1,28 @@
+#container{
+    margin: 0 auto;
+    background-color: beige;
+    width: auto;
+    height: 800px;
+}
+
+.zhukuangjia .left-b{
+    float: left;
+    width: 50%;
+    height: 100%;
+    background-color: honeydew;
+}
+
+.zhukuangjia .right-b{
+    float: right;
+    width: 50%;
+    height: 100%;
+    background-color: powderblue;
+}
+
+.zhukuangjia .right-b .r-m-b{
+    margin:30% 30%
+}
+
+.zhukuangjia .left-b .l-m-b{
+    margin:30% 30%
+}

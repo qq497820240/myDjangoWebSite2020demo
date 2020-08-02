@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>风景摄影</title>
+    <link href="{% static 'css/train_pic/mycss1.css'%}" style="text/css" rel="stylesheet">
+    <link href="{% static 'css/train_pic/fengjingsheyingcss.css'%}" style="text/css" rel="stylesheet">
+</head>
+<body class="fengjingsheying_body">
+<div class="top">
+    <div class="top_1">
+        <nav class="nav_">
+            <ul>
+                <li><a class="a1" href="" target="_blank" tytle="聪哥的主页">聪哥的主页</a></li>
+                <li><a class="a2" href="tielusheying" target="_blank" tytle="铁路摄影">铁路摄影</a></li>
+                <li><a class="a3" href="#" target="_self" tytle="风景摄影">风景摄影</a></li>
+                <li><a class="a4" href="#" target="_blank" tytle="机器人展示">机器人展示</a></li>
+                <li><a class="a5" href="#" target="_blank" tytle="足球球技SHOW">足球球技SHOW</a></li>
+                <li><a class="a6" href="#" target="_blank" tytle="聪哥的论坛">聪哥的论坛</a></li>
+                <li><a class="a6" href="../zhibo.html" target="_blank" tytle="测试用">测试用</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+    <div class="img_fengmian"><img class="fengmian" src="{%static 'images/train_pic/fengjingsheying_fengmian.jpg'%}" width="100%" height="100%"> </div>
+    <div class="fengjingsheying_lanmu">
+        <div class="fengjingsheying_lanmu_padding">
+            <h3>1.<a href="#" target="_self"><u>三门峡湖滨车站，山西风陵渡</u></a></h3>
+            <h3>2.<a href="#" target="_self"><u>十堰拍车</u></a></h3>
+            <h3>3.<a href="#" target="_self"><u>青藏铁路起始段</u></a></h3>
+        </div>
+        <div class="fengjingsheying_lanmu_padding_right">
+            <img src="{%static 'images/train_pic/huoche/xiangjiaojun.gif'%}" width="100%">
+            <video width="100%" autoplay controls="controls" loop>
+                <source src="{%static 'videos/train_pic/huoche/VID_20171123_173229.Ogg'%}">
+                <source src="{%static 'videos/train_pic/huoche/VID_20171123_173229.mp4'%}">
+            </video>
+        </div>
+    </div>
+
+</body>
+</html>

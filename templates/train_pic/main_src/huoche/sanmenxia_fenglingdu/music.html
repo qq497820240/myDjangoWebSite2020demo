@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--添加音频播放，设置为自动播放,并隐藏播放控件的显示-->
+		<audio controls="controls" autoplay="autoplay" controls="controls" hidden="hidden">
+			<source src="{% static 'music/just give me a reason.mp3'%}" type="audio/mp3">
+			<source src="{% static 'music/just give me a reason.mp3'%}" type="audio/ogg">
+			<embed height="50px" width="100px" src="{% static 'music/just give me a reason.mp3'%}">
+		</audio>
+	</body>

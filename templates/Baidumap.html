@@ -1,0 +1,83 @@
+{% load staticfiles%}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>Hello, World</title>
+    <link type="text/css" href="{% static 'boots/css/bootstrap.min.css'%}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/train_pic/hukun_zhuzhou.css'%}" rel="stylesheet">
+    <script src='http://api.map.baidu.com/api?v=3.0&ak=lpEePrfzT4iGz7yxVTowx2M8HS0nzTPn'></script>
+    <script src="{%static 'js/jsobjshiyan/tools.js'%}"></script>
+    <script src="{% static 'js/jsobjshiyan/map.js'%}"></script>
+    <script type="text/javascript" src="//apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js"></script>
+    <script type="text/javascript" src='{%static "js/jsobjshiyan/mapv/build/mapv.js"%}'></script>
+    <script type="text/javascript" src='{%static "js/wangEditor/release/wangEditor.min.js"%}'></script>
+    <script>
+        window.onload = function () {
+            var E = window.wangEditor;
+            var editor = new E('#editor');
+            editor.customConfig.menus=[
+                'head',
+                'bold',
+                'fontSize',
+                'foreColor',
+                'emoticon',
+                'image',
+                'justify'
+            ]
+            editor.customConfig.uploadImgServer = 'http://118.126.112.81/img/'
+            editor.customConfig.uploadFileName = 'imgs'
+            editor.customConfig.uploadImgMaxLength = 3
+            editor.customConfig.uploadImgTimeout = 30000
+            editor.customConfig.debug = location.href.indexOf('wangeditor_debug_mode=1') > 0
+            var $text1 = $('#text');
+            editor.customConfig.onchange = function(html){
+                $text1.val(html);
+            }
+            editor.create();
+            $text1.val(editor.txt.html(''));
+            var Cd = new CreateDiv('content_body','submit','text',editor);
+            loadServerData(Cd);
+            var map = new Map('map');
+            map.addHotSpot();
+        }
+    </script>
+</head>
+
+<body>
+<div class="container">
+    <div class="zhubei_daohang" style="height: 50px">
+        <nav class="nav" style="height: 50px">
+            <ul style="height: 100%;padding-inline-start: 5px;" class="list-group list-group-horizontal">
+                <li style="height: 100%;font-size: large"><a class="d-flex align-items-center" href="../cong" target="_blank" tytle="聪哥的主页" style="padding: auto"><font color="white">主页</font> </a></li>
+                <li style="height: 100%;font-size: large"><a class="d-flex align-items-center" href="../cong/tielusheying" target="_self" tytle="铁路摄影导航页">铁路摄影导航页</a></li>
+                <li style="height: 100%;font-size: large" ><a class="d-flex align-items-center" href=".." target="_self" tytle="首页">首页</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div id="main_body" style="border-color: black;border-style: solid;width: 98%;margin:1px auto;" class="shadow p-3  bg-white rounded">
+        <div style="width: 100%">
+            <div id="map" style="width:100%;height: 300px;border-bottom-style: solid;border-radius: 7px;"></div>
+            <div id="content_body" style="border-bottom-style: solid;border-radius: 7px;width: 100%"></div>
+        </div>
+        <div id="pageNum" style="width: 100%;height:60px;margin:0px auto;text-align: center" class="shadow p-3  bg-white rounded">
+            <ul class="pagination" style="height: 20px">
+                {% for pageN in page %}
+                <li>
+                    <a href="/map/{{pageN}}" class="page-link">{{pageN}}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div id = 'editor' style="border-color: black;border-style: solid;width: 98%;margin:1px auto;" class="shadow p-3  bg-white rounded">
+        <form><textarea id="text" class="text" rows="20"  type="text" value="请输入内容" style="width: 95%;margin-top: 5px;"></textarea></form>
+    </div>
+    <button class="btn btn-secondary popover-test" style="height: 30px;margin:0px auto;border-radius: 5px;" id="submit">提交</button>
+</div>
+</body>
+</html>
